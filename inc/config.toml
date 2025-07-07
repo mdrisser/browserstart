@@ -1,0 +1,32 @@
+[astronomy]
+feeds = [
+    "https://www.astronomy.com/feed/?post_type=potd",
+    "https://www.astronomy.com/tags/news/feed",
+    "https://www.nasa.gov/feeds/iotd-feed/",
+    "https://www.nasa.gov/news-release/feed/",
+    "https://www.nasa.gov/aeronautics/feed/",
+    "https://rss.timeanddate.com/news-astronomy.rss",
+    "https://skyandtelescope.com/astronomy-news/feed/",
+    "https://skyandtelescope.com/astronomy-news/observing-news/feed/",
+    "https://skyandtelescope.com/observing/sky-at-a-glance/feed/",
+    "https://skyandtelescope.com/observing/feed/"
+]
+
+[christian]
+feeds = [
+    "https://www.christianity.com/rss/",
+    "https://www.christianpost.com/category/featured-news/rss",
+    "https://www.christianpost.com/category/us/rss",
+    "https://www.christianpost.com/category/world/rss",
+    "https://www.christiantoday.com/us?format=xml",
+    "https://www.christiantoday.com/world?format=xml"
+]
+
+[amateur_radio]
+feeds = [
+    "http://www.arrl.org/arrl.rss",
+    "https://www.iaru.org/feed/",
+    "https://www.arnewsline.org/?format=rss"
+]
+
+[news]
