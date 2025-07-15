@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Weather</title>
+    <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+        <style>
+        body {
+            font-size: 1.25em;
+        }
+        .low {
+            color: #3FA72C;
+            font-weight: bold;
+        }
+        .moderate {
+            color: #FFF300;
+            font-weight: bold;
+        }
+        .high {
+            background-color: #F18C00;
+            color: #14161A;
+            font-weight: bold;
+        }
+        .very-high {
+            background-color: #E32E0A;
+            color: #14161A;
+            font-weight: bold;
+        }
+        .extreme {
+            background-color: #B4649F;
+            color: #14161A;
+            font-weight: bold;
+        }
+        .has-border {
+            border: 1px solid #00EBC7;
+        }
+        .hightemp { color: rgb(219, 19, 19); }
+        #temp {
+            font-size: 3em;
+            font-weight: bold;
+            padding-left: 1rem;
+        }
+        #wx-desc {
+            margin-top: -0.5rem;
+            text-align: center;
+            font-weight: bold;
+            font-variant: all-small-caps;
+            font-size: 1.25em;
+        }
+        #wx-icon {
+            margin-top: -0.5rem;
+        }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <header class='columns'>
+                <div class='column is-full has-text-centered'>
+                    <h1 class='is-size-1 has-text-weight-bold'>Current weather for <span id='loc'></span></h1>
+                    <div id='last-update'></div>
+                </div>
+            </header>
+            <div class='columns'>
+                <div id='basics' class='column is-2 is-offset-4'>
+                    <div class='columns'>
+                        <div id='temp'></div>
+                        <div id='icon'></div>
+                    </div>
+                    <div>Feels like: <span id='feels-like'></span></div>
+                    <div id='wind'></div>
+                    <div id='gust'></div>
+                    <div id='uv'></div>
+                    <div id='heat-index'></div>
+                    <div id='clouds'></div>
+                    <div id='humidity'></div>
+                    <div id='pressure'></div>
+                    <div id='precip'></div>
+                    <div id='dewpoint'></div>
+                </div>
+            </div>
+        </div>
+    <!-- JAVASCRIPT -->
+        <script src="js/jquery-3.7.1.min.js"></script>
+        <script>
+        let wx_api_key = 'a80575284da24eac8c5173027230610';
+        let loc = document.location.href;
+        
+        let params = new URLSearchParams(new URL(loc).search);
+        
+        function check_temp(id, temp) {
+            if(temp >= 100) {
+                $(id).addClass('hightemp');
+            }
+        }
+
+        function check_uv(id, uv) {
+            let css_class = '';
+            let txt = '';
+
+            if(uv >= 1 && uv <= 2) {
+                css_class = 'low';
+            } else if(uv > 2 && uv <= 5) {
+                css_class = 'moderate';
+            } else if(uv > 5 && uv <= 7) {
+                css_class = 'high';
+                txt = '(HIGH)';
+            } else if (uv > 7 && uv <= 11) {
+                css_class = 'very-high';
+                txt = '(VERY HIGH)'
+            } else if(uv >= 11) {
+                css_class = 'extreme';
+                txt = ">>> EXTREME! <<<"
+            } else {
+                css_class = 'error';
+                txt = 'ERROR';
+                console.log(uv);
+            }
+
+            $(id).addClass(css_class);
+
+            if(txt != '') {
+                let html = $(id).html();
+
+                $(id).html(html + ' ' + txt);
+            }
+        }
+
+        $(document).ready(function() {
+            if(params.has('q')) {
+                let zip = params.get('q');
+                let wx_api_key = 'a80575284da24eac8c5173027230610';
+                let url = 'https://api.weatherapi.com/v1/current.json?q=' + zip + '&key=' + wx_api_key;
+
+                $.getJSON(url, function(data) {
+                    let temp = Math.round(data['current']['temp_f']);
+                    let feels = Math.round(data['current']['feelslike_f']);
+                    let uv = data['current']['uv'];
+
+                    $('#loc').html(data['location']['name'] + ', ' + data['location']['region']);
+                    $('#last-update').html('Last updated: ' + data['current']['last_updated']);
+
+                    $('#temp').html(temp + '&deg;F');
+                    $('#icon').html('<img id="wx-icon" class="image" src="http:' + data['current']['condition']['icon'] + '" /><br /><div id="wx-desc">' + data['current']['condition']['text'] + '</div>');
+                    $('#feels-like').html(feels + '&deg;F');
+                    $('#wind').html('Wind: ' + Math.round(data['current']['wind_mph']) + 'mph (' + data['current']['wind_dir'] + ')');
+                    $('#gust').html('Gust: ' + Math.round(data['current']['gust_mph']) + "mph");
+                    $('#uv').html('UV Index: ' + uv);
+                    $('#heat-index').html('Heat Index: ' + Math.round(data['current']['heatindex_f']) + '&deg;F');
+                    $('#clouds').html('Cloud Cover: ' + data['current']['cloud'] + '%');
+                    $('#humidity').html('Humidity: ' + data['current']['humidity'] + '%');
+                    $('#pressusre').html('Pressure: ' + data['current']['pressure_in'] + 'in');
+                    $('#precip').html('Precip.: ' + data['current']['precip_in'] + 'in');
+                    $('#dewpoint').html('Dew Point: ' + data['current']['dewpoint_f'] + '&deg;F');
+
+                    check_temp('#temp', temp);
+                    check_temp('#feels-like', temp);
+                    check_uv('#uv', uv);
+                });
+            } else {
+                error = "<article class='message is-warning'>";
+                error += "<div class='message-header'><p>NO LOCATION</p></div>";
+                error += "<div class='message-body'>No location was provided. Please <a href='new_tab.html'>go back</a> and try again.</div>";
+                error += "</article>";
+
+                $('header').html(error);
+            }
+        });
+        </script>
+    </body>
+</html>
