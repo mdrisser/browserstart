@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>New Tab Page</title>
+    <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+        <style>
+        body {
+            font-size: 1em;
+        }
+        .has-border {
+            border: 1px solid #00EBC7;
+        }
+        .hightemp { color: rgb(219, 19, 19); }
+        .temp {
+            font-size: 2em;
+            font-weight: bold;
+            padding-left: 1rem;
+        }
+        .wx-icon {
+            margin-top: -0.5rem;
+        }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <header class='columns'>
+                <div class='column'></div>
+                <div class='column has-text-centered'>
+                    <h1 class='title is-1'>New Tab Page</h1>
+                    <div class='subtitle'>Powered by <a href="https://jquery.com" target="_blank">jQuery</a></div>
+                </div>
+                <div class='column'></div>
+            </header>
+        <!-- SEARCH -->
+            <div id='search' class='columns'>
+                <div class='column'></div>
+                <div class="column has-text-centered">
+                    <form id='searchForm'>
+                        <div class='field'>
+                            <label for="searchInput">SEARCH THE WEB</label>
+                            <div class='control'>
+                                <input class="input is-primary mt-1" type="input" placeholder="Search the web with Bing" id="searchInput">
+                            </div>
+                            <div class='control'>
+                                <button class='button is-primary mt-2' type='submit'>SEARCH</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class='column'></div>
+            </div>
+        <!-- WEATHER -->
+            <div class='columns'>
+                <div class='column'></div>
+                <div id='bhc-wx' class='column has-border'></div>
+                <div id='kmn-wx' class='column has-border'></div>
+                <div id='prs-wx' class='column has-border'></div>
+                <div class='column'></div>
+            </div>
+        </div>
+    <!-- JAVASCRIPT -->
+        <script src="js/jquery-3.7.1.min.js"></script>
+        <script>
+        let wx_api_key = 'a80575284da24eac8c5173027230610';
+        
+        function check_temp(id, temp) {
+            if(temp >= 100) {
+                $(id).addClass('hightemp');
+            }
+        }
+
+        function get_weather(div, zip) {
+            let url = 'https://api.weatherapi.com/v1/current.json?q=' + zip + '&key=' + wx_api_key;
+
+            $.getJSON(url, function(data) {
+                let name = data['location']['name'];
+                let temp = Math.round(data['current']['temp_f']);
+                let wind_speed = Math.round(data['current']['wind_mph']);
+                let wind_dir = data['current']['wind_dir'];
+                let wind_gust = Math.round(data['current']['gust_mph']);
+                let uv_index = data['current']['uv'];
+                let icon = 'http:'+data['current']['condition']['icon'];
+                console.log(icon);
+
+                let wx_html = "<div class='title'><a href='weather.html?q=" + zip  + "'>" + name + "</a></div>";
+                wx_html += "<div class='columns'>";
+                wx_html += "<div id='temp' class='col-3 temp'>"+ temp + "&deg;F</div>";
+                wx_html += "<div class='col-3 wx-icon'><img src='"+ icon + "'></div>";
+                wx_html += "</div>";
+                wx_html += "<div class='wind'>Wind: " + wind_speed + "MPH (" + wind_dir + ")</div>";
+                wx_html += "<div class='gust'>Gust: " + wind_gust + "MPH</div>";
+                wx_html += "<div class='uv'>UV Index: " + uv_index + "<div>";
+
+                $(div).html(wx_html);
+
+                check_temp('#temp', temp);
+            }).fail(function(){
+                $(div).html("<span class='error'>There was an error fetching the weather.</span");
+            });
+        }
+
+        $(document).ready(function() {
+            get_weather('#bhc-wx', 86442);
+            get_weather('#kmn-wx', 86409);
+            get_weather('#prs-wx', 86301);
+
+            $('#searchForm').on('submit', function(e) {
+                e.preventDefault();
+                let query = $('#searchInput').val();
+                window.location.href = 'https://www.bing.com/search?q=' + query;
+            });
+        });
+        </script>
+    </body>
+</html>
