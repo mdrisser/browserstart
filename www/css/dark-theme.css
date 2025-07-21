@@ -1,0 +1,50 @@
+:root {
+    --primary-color: rgb(187, 134, 252);        /* Primary foreground/text color */
+    --primary-variant: rgb(55, 0, 179);         /* Primary foregroundtext color variant */
+    --secondary-color: rgb(3, 218, 198);        /* Secondary foreground/text color */
+    --background-color: rgb(18, 18, 18);        /* Primary page background color */
+    --surface-color: rgba(255, 255, 255, 0.15); /* Background color for objects slightly higher than the background*/
+    --accent-color: rgb(98, 0, 238);            /**/
+    --error-color: rgb(255, 151, 0);            /**/
+    --highlight-bg: rgb(134, 55, 152);          /* Highlight background color */
+    --highlight-color: rgb(217, 200, 225);      /* Highlight foreground/text color */
+    --highlight-altbg: rgb(253, 144, 2);        /* Alternate highlight background color */
+    --highlight-altfg: rgb(255, 255, 255);      /* Alternate highlight foreground/text color */
+}
+body {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+}
+h1, h2, h3, h4 { font-weight: bold; }
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.75em;
+}
+p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.accent { color: var(--accent-color); }
+.button-primary {
+    background-color: var(--primary-variant);
+    color: var(--highlight-color);
+    border-style: none;
+    padding: 0.25rem;
+}
+.button-primary:hover {
+    background-color: var(--highlight-bg);
+    color: var(--highlight-color);
+}
+.highlight {
+    background-color: var(--highlight-bg);
+    color: var(--highlight-color);
+}
+.highlight-alt {
+    background-color: var(--highlight-altbg);
+    color: var(--highlight-altfg);
+}
+.hightemp { color: rgb(255, 64, 65); }
+.pd-1 { padding: 1rem;}
+.surface { background-color: var(--surface-color); }

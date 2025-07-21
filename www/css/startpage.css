@@ -1,0 +1,154 @@
+/* Basic body styling */
+
+/* Headings font */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+/* Main body font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+html { scroll-behavior: smooth; animation: ease-in-out;}
+body {
+    font-family: "Montserrat", sans-serif; /* Preferred font */
+    background-color: #04131A;
+    padding: 20px;
+    line-height: 1.6;
+    color: #DEDEDE;
+}
+/* Main container for content */
+.container {
+    max-width: 960px; /* Max width for desktop */
+    margin: 0 auto; /* Center the container */
+    padding: 0 15px; /* Add some horizontal padding */
+}
+/* Styling for category titles */
+.section-title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #B9BDBE;
+    border-bottom: 2px solid #e6e6e6; /* Subtle separator */
+    padding-bottom: 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+/* Card styling for individual feeds */
+.card {
+    margin-bottom: 20px;
+    border-radius: 0.2rem;
+    box-shadow: 0 0.1rem 0.2rem rgba(48,55,66,.1); /* Soft shadow */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+    background-color: #0C2D41
+}
+.card:hover {
+    transform: translateY(-3px); /* Lift card on hover */
+}
+/* Header of the card */
+.card-header {
+    background-color: #0C2D41;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 1rem;
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+}
+/* Title within the card header (feed name) */
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    color: #E7E7E7;
+}
+/* Subtitle within the card header (feed URL) */
+.card-subtitle {
+    font-size: 0.85rem;
+    color: #D3D3D3;
+    word-break: break-all; /* Ensure long URLs wrap */
+}
+.card-subtitle a {
+    color: #D3D3D3;
+    text-decoration: none;
+}
+.card-subtitle a:hover {
+    text-decoration: underline;
+}
+/* Body of the card (feed items) */
+.card-body {
+    padding: 1rem;
+}
+/* Styling for each individual feed item (tile) */
+.tile {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #eee; /* Dashed separator between items */
+}
+.tile:last-child {
+    border-bottom: none; /* No border for the last item */
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+/* Title of the feed item */
+.tile-title {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+.tile-title a {
+    color: #CEECEF;
+    text-decoration: none;
+    font-weight: bold;
+}
+.tile-title a:hover {
+    text-decoration: underline;
+}
+/* Subtitle of the feed item (description) */
+.tile-subtitle {
+    font-size: 0.85rem;
+    color: #C0C0C0;
+    margin-top: 5px;
+}
+/* Small text for publication date */
+.tile-subtitle small {
+    font-size: 0.75rem;
+    color: #B0B0B0;
+    display: block; /* Ensure it takes its own line */
+    margin-top: 5px;
+}
+/* Styling for empty state messages */
+.empty-state {
+    text-align: center;
+    padding: 40px 0;
+    color: #888;
+    font-style: italic;
+}
+.wx {
+    border: 1px solid #B0B0B0;
+}
+
+h1, h2, h3, h4 { font-family: "Merriweather", serif; }
+h1 { font-size: 2em; }
+h2 { font-size: 1.75em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+
+/* Responsive adjustments using Spectre's grid system */
+/* On medium screens (tablets), columns stack */
+@media (max-width: 960px) {
+    .column.col-6 {
+        width: 100%; /* Make columns full width */
+    }
+}
+/* On small screens (mobile), further adjustments if needed */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .card-title {
+        font-size: 1.1rem;
+    }
+    .tile-title {
+        font-size: 0.95rem;
+    }
+    .tile-subtitle {
+        font-size: 0.8rem;
+    }
+}
