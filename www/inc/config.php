@@ -11,22 +11,6 @@ function debug_print($v) {
 require_once(DOC_ROOT."inc/feeds.php");
 
 $weatherapikey = '';
-$wx_url_base = "http://api.weatherapi.com/v1/current.json?key=".$weatherapikey;
-
-$bhc = "86442";
-$kmn = "86409";
-$prs = "86301";
-$flg = "86001";
-
-$bhc_weather = $wx_url_base."&q=".$bhc;
-$kmn_weather = $wx_url_base."&q=".$kmn;
-$prs_weather = $wx_url_base."&q=".$prs;
-
-$bhc_wx = json_decode(file_get_contents($bhc_weather));
-$kmn_wx = json_decode(file_get_contents($kmn_weather));
-$prs_wx = json_decode(file_get_contents($prs_weather));
-
-//debug_print($bhc_wx);
 
 $num_posts = 5;
 
