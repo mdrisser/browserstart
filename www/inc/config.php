@@ -1,5 +1,5 @@
 <?php
-define("DOC_ROOT", "/var/www/browser-start/");
+define("DOC_ROOT", "/var/www/browserstart/www/");
 define("WEB_ROOT", "/");
 
 function debug_print($v) {
@@ -10,17 +10,21 @@ function debug_print($v) {
 
 require_once(DOC_ROOT."inc/feeds.php");
 
-$openweatherapikey = '0277487299240a0ad60731823cf0a433';
-$bhc_lat = "35.10149663767291";
-$bhc_long =  "-114.6048378294153";
-$kmn_lat = "35.2485672786985";
-$kmn_long = "-114.02866037523933";
+$weatherapikey = '';
+$wx_url_base = "http://api.weatherapi.com/v1/current.json?key=".$weatherapikey;
 
-$bhc_openweather = "https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=".$bhc_lat."&lon=".$bhc_long."&appid=0277487299240a0ad60731823cf0a433";
-$kmn_openweather = "https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=".$kmn_lat."&lon=".$kmn_long."&appid=0277487299240a0ad60731823cf0a433";
+$bhc = "86442";
+$kmn = "86409";
+$prs = "86301";
+$flg = "86001";
 
-$bhc_wx = json_decode(file_get_contents($bhc_openweather));
-$kmn_wx = json_decode(file_get_contents($kmn_openweather));
+$bhc_weather = $wx_url_base."&q=".$bhc;
+$kmn_weather = $wx_url_base."&q=".$kmn;
+$prs_weather = $wx_url_base."&q=".$prs;
+
+$bhc_wx = json_decode(file_get_contents($bhc_weather));
+$kmn_wx = json_decode(file_get_contents($kmn_weather));
+$prs_wx = json_decode(file_get_contents($prs_weather));
 
 //debug_print($bhc_wx);
 
