@@ -61,7 +61,7 @@
                 </div>
             </header>
             <div class='columns'>
-                <div id='basics' class='column is-2 is-offset-4'>
+                <div id='basics' class='column is-3 is-offset-4'>
                     <div class='columns'>
                         <div id='temp'></div>
                         <div id='icon'></div>
@@ -80,7 +80,7 @@
             </div>
         </div>
     <!-- JAVASCRIPT -->
-        <script src="js/jquery-3.7.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
         let wx_api_key = 'a80575284da24eac8c5173027230610';
         let loc = document.location.href;
@@ -109,7 +109,7 @@
                 txt = '(VERY HIGH)'
             } else if(uv >= 11) {
                 css_class = 'extreme';
-                txt = ">>> EXTREME! <<<"
+                txt = "EXTREME!"
             } else {
                 css_class = 'error';
                 txt = 'ERROR';
@@ -128,7 +128,7 @@
         $(document).ready(function() {
             if(params.has('q')) {
                 let zip = params.get('q');
-                let wx_api_key = 'a80575284da24eac8c5173027230610';
+                let wx_api_key = '';
                 let url = 'https://api.weatherapi.com/v1/current.json?q=' + zip + '&key=' + wx_api_key;
 
                 $.getJSON(url, function(data) {
