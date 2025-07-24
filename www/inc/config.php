@@ -8,9 +8,12 @@ function debug_print($v) {
     echo "</PRE>";
 }
 
-require_once(DOC_ROOT."inc/feeds.php");
+//require_once(DOC_ROOT."inc/feeds.php");
+require_once(DOC_ROOT."inc/vendor/autoload.php");
 
-$weatherapikey = '';
+use Yosymfony\Toml\Toml;
+
+$conf = Toml::ParseFile(DOC_ROOT.'inc/config.toml');
 
 $num_posts = 5;
 
