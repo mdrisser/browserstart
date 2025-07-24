@@ -1,7 +1,7 @@
 /* Basic body styling */
 
 /* Headings font */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');*/
 
 /* Main body font */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -72,6 +72,11 @@ body {
 .card-body {
     padding: 1rem;
 }
+.nav-bar-item {
+    margin-left: 1rem;
+    font-weight: bold;
+    font-size: 1.25em;
+}
 /* Styling for each individual feed item (tile) */
 .tile {
     margin-bottom: 15px;
@@ -120,12 +125,29 @@ body {
 .wx {
     border: 1px solid #B0B0B0;
 }
+.wx-popup {
+    cursor: pointer;
+    font-weight: bold;
+    color: #5755D9;
+}
 
-h1, h2, h3, h4 { font-family: "Merriweather", serif; }
+/* Styling for modal popups */
+.modal-container {
+    background-color: #04131A;
+}
+.modal-title {
+    color: #DEDEDE;
+    font-weight: bold;
+}
+.temp {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Styling for 'normal' elements */
 h1 { font-size: 2em; }
-h2 { font-size: 1.75em; }
-h3 { font-size: 1.5em; }
-h4 { font-size: 1.25em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.25em; }
 
 /* Responsive adjustments using Spectre's grid system */
 /* On medium screens (tablets), columns stack */
