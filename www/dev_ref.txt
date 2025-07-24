@@ -1,0 +1,4 @@
+This file is intended to be a repository to store information relevant to the development of Browser Start Page.
+
+Weather API: https://www.weatherapi.com/docs/
+
