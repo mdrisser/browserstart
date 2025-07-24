@@ -1,0 +1,89 @@
+[cfg]
+weatherapiurl = "https://api.weatherapi.com/v1/current.json?key="
+weatherapikey = "8c4f5fadb4ff4214aa9184904252207"
+
+[[rss]]
+name = "Artificial Intelligence"
+[[rss.feeds]]
+name = "Simon Wilson"
+url = "https://simonwillison.net/tags/ai.atom"
+
+[[rss]]
+name = "Astronomy"
+
+[[rss.feeds]]
+name = "NASA - IotD"
+url = "https://www.nasa.gov/feeds/iotd-feed/"
+
+[[rss.feeds]]
+name = "NASA - News"
+url = "https://www.nasa.gov/news-release/feed/"
+
+[[rss.feeds]]
+name = "Sky & Telescope - News"
+url = "https://skyandtelescope.com/astronomy-news/feed/"
+
+[[rss.feeds]]
+name = "Sky & Telescope - Observing"
+url = "https://skyandtelescope.com/astronomy-news/observing/feed/"
+
+[[rss.feeds]]
+name = "Sky & Telescope - Sky at a Glance"
+url = "https://skyandtelescope.com/observing/sky-at-a-glance/feed/"
+
+[[rss]]
+name = "Christian"
+
+[[rss.feeds]]
+name = "Christian Post - News"
+url = "https://www.christianpost.com/category/featured-news/rss"
+
+[[rss.feeds]]
+name = "Christian Post - US"
+url = "https://www.christianpost.com/category/us/rss"
+
+[[rss.feeds]]
+name = "Christian Post - World"
+url = "https://www.christianpost.com/category/world/rss"
+
+[[rss.feeds]]
+name = "Christian Today - US"
+url = "https://www.christiantoday.com/us?format=xm"
+
+[[rss.feeds]]
+name = "Christian Today - World"
+url = "https://www.christiantoday.com/world?format=xml"
+
+[[rss]]
+name = "Development"
+
+[[rss.feeds]]
+"name" = "David Walsh Blog"
+"url" = "https://davidwalsh.name/feed"
+
+[[rss.feeds]]
+"name" = "CSS-Tricks - Articles"
+"url" = "https://css-tricks.com/category/articles/feed"
+
+[[rss.feeds]]
+"name" = "CSS-Tricks - Newsletters"
+"url" = "https://css-tricks.com/rss-for-newsletters"
+
+[[rss]]
+"name" = "Technology"
+
+[[rss.feeds]]
+"name" = "TechCrunch"
+"url" = "http://feeds.feedburner.com/techcrunch/startups"
+
+[[rss.feeds]]
+"name" = "The Verge"
+"url" = "https://www.theverge.com/rss/index.xml"
+
+[[rss.feeds]]
+"name" = "Ars Technica"
+"url" = "https://arstechnica.com/feed/"
+
+[[rss.feeds]]
+"name" = "NASA Aeronautics"
+"url" = "https://www.nasa.gov/aeronautics/feed/"
